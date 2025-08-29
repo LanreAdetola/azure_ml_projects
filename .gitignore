@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# Data files (optional, if you don’t want to upload raw data)
+*.csv
+*.tsv
+*.json
+
+# AzureML local files
+.azureml/
