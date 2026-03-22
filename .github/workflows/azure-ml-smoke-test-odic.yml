@@ -1,4 +1,4 @@
-name: Azure ML Smoke Test
+name: Azure ML Smoke Test ODIC
 
 on:
   workflow_dispatch:
