@@ -6,6 +6,7 @@ on:
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Checkout repository
