@@ -1,0 +1,31 @@
+name: Azure ML Smoke Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Verify AML workspace access
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          AZURE_ML_WORKSPACE: ${{ secrets.AZURE_ML_WORKSPACE }}
+        run: |
+          az extension add --name ml --yes
+          az account show --output table
+          az ml workspace show \
+            --name "$AZURE_ML_WORKSPACE" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --subscription "$AZURE_SUBSCRIPTION_ID" \
+            --output table
